@@ -3,7 +3,7 @@ import { CarZodSchema, ICar } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
 
-class CarService implements IService<ICar> {
+export default class CarService implements IService<ICar> {
   private _frame: IModel<ICar>;
 
   constructor(model: IModel<ICar>) {
@@ -40,5 +40,3 @@ class CarService implements IService<ICar> {
     return updated;
   }
 }
-
-export default CarService;
