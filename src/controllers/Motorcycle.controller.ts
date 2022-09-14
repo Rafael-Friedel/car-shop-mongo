@@ -26,7 +26,7 @@ export default class MotorcycleController {
   public async delete(req: Request, res: Response<IMotorcycle>) {
     const { id } = req.params;
     const deleted = await this._service.delete(id);
-    res.status(200).json(deleted);
+    res.status(204).json(deleted);
   }
 
   public async update(req: Request, res: Response<IMotorcycle>) {
