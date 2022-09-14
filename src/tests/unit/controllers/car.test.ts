@@ -56,12 +56,10 @@ describe('Car Controller', () => {
   describe('Delete Car', () => {
     it('Success', async () => {
       req.params = { id: carMockWithId._id };
-      sinon.stub(carService, 'delete').resolves(carMockWithId);
+      sinon.stub(carService, 'delete').resolves();
       await carController.delete(req, res);
 
-      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carMockWithId)).to.be
-        .true;
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
     });
   });
 
