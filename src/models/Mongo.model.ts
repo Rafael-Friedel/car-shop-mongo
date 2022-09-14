@@ -1,6 +1,6 @@
-import { isValidObjectId, Model } from 'mongoose';
+import { isValidObjectId, Model, UpdateQuery } from 'mongoose';
 import { ErrorTypes } from '../errors/catalog';
-import IModel from '../interfaces/IModel.interface';
+import { IModel } from '../interfaces/IModel';
 
 abstract class MongoModel<T> implements IModel<T> {
   protected _model: Model<T>;
@@ -29,7 +29,12 @@ abstract class MongoModel<T> implements IModel<T> {
 
   public async update(_id: string, payload: Partial<T>): Promise<T | null> {
     if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
-    return this._model.findByIdAndUpdate(_id, payload) as T;
+    const result = await this._model.findByIdAndUpdate(
+      { _id },
+      { ...payload } as UpdateQuery<T>,
+      { new: true },
+    );
+    return result as T;
   }
 }
 
