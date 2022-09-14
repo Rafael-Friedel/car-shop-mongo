@@ -12,10 +12,9 @@ export default class CarService implements IService<ICar> {
 
   public async create(obj: ICar): Promise<ICar> {
     const parsed = CarZodSchema.safeParse(obj);
-    if (!parsed.success) {
-      throw parsed.error;
-    }
-    return this._car.create(parsed.data as ICar);
+    if (!parsed.success) throw parsed.error;
+
+    return this._car.create(obj);
   }
 
   public async readOne(_id: string): Promise<ICar> {

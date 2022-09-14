@@ -15,7 +15,7 @@ export default class MotorcycleService implements IService<IMotorcycle> {
     if (!parsed.success) {
       throw parsed.error;
     }
-    return this._motorcycle.create(parsed.data as IMotorcycle);
+    return this._motorcycle.create(obj);
   }
 
   public async readOne(_id: string): Promise<IMotorcycle> {
