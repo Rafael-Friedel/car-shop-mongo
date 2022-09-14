@@ -99,5 +99,16 @@ describe('Car Service', () => {
       }
       expect(erro.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     });
+
+    it('Body incomplet', async () => {
+      let error;
+      try {
+        await carService.update(carMockWithId._id, {} as ICar);
+      } catch (err) {
+        error = err;
+      }
+
+      expect(error).to.be.instanceOf(ZodError);
+    });
   });
 });
