@@ -35,6 +35,8 @@ export default class MotorcycleService implements IService<IMotorcycle> {
   }
 
   public async update(_id: string, obj: IMotorcycle): Promise<IMotorcycle> {
+    const parsed = MotorCycleZodSchema.safeParse(obj);
+    if (!parsed.success) throw parsed.error;
     const updated = await this._motorcycle.update(_id, obj);
     if (!updated) throw new Error(ErrorTypes.EntityNotFound);
     return updated;
