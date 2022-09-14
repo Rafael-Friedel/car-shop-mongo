@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import IVehicle from './IVehicle';
 
 const CarZodSchema = z.object({
   doorsQty: z.number().positive().int().gte(2)
@@ -7,7 +8,7 @@ const CarZodSchema = z.object({
     .lte(7),
 });
 
-type ICar = z.infer<typeof CarZodSchema>;
+type ICar = IVehicle & z.infer<typeof CarZodSchema>;
 
 export default ICar;
 export { CarZodSchema };
