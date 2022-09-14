@@ -16,8 +16,8 @@ export default class CarController {
   }
 
   public async read(req: Request, res: Response<ICar[]>) {
-    const allFrames = await this._service.read();
-    return res.status(200).json(allFrames);
+    const allCars = await this._service.read();
+    return res.status(200).json(allCars);
   }
 
   public async delete(req: Request, res: Response<ICar>) {
