@@ -70,5 +70,13 @@ describe('Car Model', () => {
       const updated = await carModel.update(validId, carMock);
       expect(updated).to.be.deep.equal(carMockWithId);
     });
+
+    it('id not valid', async () => {
+      try {
+        await carModel.update(invalidId, carMock);
+      } catch (error: any) {
+        expect(error.message).to.be.equal('InvalidMongoId');
+      }
+    });
   });
 });
