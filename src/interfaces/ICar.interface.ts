@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import IVehicle from './IVehicle';
+import IVehicle from './IVehicle.interface';
 
 const CarZodSchema = z.object({
   doorsQty: z.number().positive().int().gte(2)
