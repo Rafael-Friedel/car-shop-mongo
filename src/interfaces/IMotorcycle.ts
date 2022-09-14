@@ -1,11 +1,13 @@
 import { z } from 'zod';
-import { IVehicle } from './IVehicle';
+import { VehicleZodSchema } from './IVehicle';
 
-const MotorCycleZodSchema = z.object({
-  category: z.enum(['Street', 'Custom', 'Trail']),
-  engineCapacity: z.number().positive().int().lte(2500),
-});
+const MotorCycleZodSchema = VehicleZodSchema.merge(
+  z.object({
+    category: z.enum(['Street', 'Custom', 'Trail']),
+    engineCapacity: z.number().positive().int().lte(2500),
+  }),
+);
 
-export type IMotorcycle = IVehicle & z.infer<typeof MotorCycleZodSchema>;
+export type IMotorcycle = z.infer<typeof MotorCycleZodSchema>;
 
 export { MotorCycleZodSchema };
