@@ -6,6 +6,6 @@ const MotorCycleZodSchema = z.object({
   engineCapacity: z.number().positive().int().lte(2500),
 });
 
-export type IMotorCycle = IVehicle & z.infer<typeof MotorCycleZodSchema>;
+export type IMotorcycle = IVehicle & z.infer<typeof MotorCycleZodSchema>;
 
 export { MotorCycleZodSchema };
