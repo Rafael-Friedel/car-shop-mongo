@@ -60,7 +60,7 @@ Na sua máquina você deve ter:
  ```
 
  ```
- docker start app_backend db
+ docker start car_shop car_shop_db
  ```
  
  Para conferir a aplicação back-end basta acessar no seu navegador:
