@@ -56,7 +56,7 @@ Na sua máquina você deve ter:
  
  
  ```
- cd car-shop-mongo && npm run compose:up
+ cd car-shop-mongo && docker compose up -d --build
  ```
 
  ```
